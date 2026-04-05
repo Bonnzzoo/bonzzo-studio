@@ -1,4 +1,3 @@
-import MorphShape from "./MorphShape";
 
 export default function Hero() {
   return (
@@ -13,14 +12,14 @@ export default function Hero() {
 
       <div className="hero-lux-content">
         <h1 className="hero-lux-title">
-          <div className="hero-lux-title-row">
-            <span className="hero-lux-name fade-up">Y<MorphShape />USSEF</span>
+          <div className="hero-lux-title-row hero-lux-title-top">
+            <span className="hero-lux-name fade-up">BONZO</span>
+            <span className="hero-lux-meta slide-down hero-lux-meta-tag" style={{ animationDelay: "0.3s" }}>
+              ✦ SENIOR UI/UX<br />DESIGNER
+            </span>
           </div>
-          <div className="hero-lux-accent fade-in">
-            <span className="hero-lux-arabic">﹁يوسف﹂</span>
-          </div>
-          <div className="hero-lux-title-row">
-            <span className="hero-lux-name fade-up" style={{ animationDelay: "0.1s" }}>SAYED</span>
+          <div className="hero-lux-title-row hero-lux-title-bottom">
+            <span className="hero-lux-name fade-up" style={{ animationDelay: "0.1s" }}>STUDIO</span>
           </div>
         </h1>
         <p className="hero-lux-subtitle fade-up" style={{ animationDelay: "0.2s" }}>

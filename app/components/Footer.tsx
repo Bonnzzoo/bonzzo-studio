@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="footer" id="footer">
       {/* Top bar */}
       <div className="footer-top-bar">
-        <span className="footer-name">[YOUSSEF SAYED]</span>
+        <span className="footer-name">[BONZO STUDIO]</span>
         <span className="footer-copyright">[COPYRIGHT 2026]</span>
       </div>
 
@@ -73,7 +73,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="footer-bottom">
-        <span>© 2026 YS</span>
+        <span>© 2026 BONZO</span>
       </div>
     </footer>
   );

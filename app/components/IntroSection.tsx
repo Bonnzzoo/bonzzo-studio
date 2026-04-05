@@ -3,6 +3,7 @@ export default function IntroSection() {
     <section className="intro-section" id="intro">
       <div className="intro-section-bg" />
       <div className="intro-content">
+        <span className="intro-label reveal">[PHILOSOPHY]</span>
         <div className="intro-text-block reveal">
           <div className="intro-line">
             Shaping <span className="bracket">[IMPACTFUL]</span> digital

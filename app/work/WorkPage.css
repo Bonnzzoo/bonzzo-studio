@@ -1,0 +1,184 @@
+/* ==========================================================================
+   WORK PAGE GRID & ANIMATIONS (GRIFLAN STYLE)
+   ========================================================================== */
+
+.work-page-dark {
+  background: #000;
+  color: #FFFDBB; /* Warm off-white */
+  min-height: 100vh;
+  padding-top: 140px;
+  padding-bottom: 120px;
+  /* Prevent horizontal scroll from layout */
+  overflow-x: hidden; 
+}
+
+/* --- HERO BLOCK --- */
+.work-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+  position: relative;
+  padding: 0 40px;
+}
+
+.work-hero-title {
+  font-family: var(--font-script);
+  font-style: italic; /* Mimicking Griflan's Tan font */
+  font-size: clamp(4rem, 10vw, 80px);
+  color: #FFFDBB;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: capitalize;
+}
+
+.work-filter-label {
+  position: absolute;
+  left: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 187, 0.6);
+  border: 1px solid rgba(255, 253, 187, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.work-filter-label:hover {
+  background: rgba(255, 253, 187, 0.1);
+  color: #FFFDBB;
+}
+
+/* --- THE STAGGERED GRID --- */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 30px;
+  row-gap: 100px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 60px;
+  align-items: start; /* CRITICAL for the bottom stagger wave */
+}
+
+/* --- PROJECT CARD --- */
+.work-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.work-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pattern Engine for Aspect Ratios */
+/* Row 1 Pattern: 0.8, 0.92, 1.1 */
+.work-card-ar-0 { aspect-ratio: 0.8; }
+.work-card-ar-1 { aspect-ratio: 0.92; }
+.work-card-ar-2 { aspect-ratio: 1.1; }
+
+/* Row 2 Pattern: 1.1, 0.92, 0.8 */
+.work-card-ar-3 { aspect-ratio: 1.1; }
+.work-card-ar-4 { aspect-ratio: 0.92; }
+.work-card-ar-5 { aspect-ratio: 0.8; }
+
+.work-img-container {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  background: #111; /* Dark placeholder color */
+}
+
+.work-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Fallback gradient if no image is present */
+.work-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1A1A1A 0%, #0A0A0A 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(255, 253, 187, 0.2);
+  letter-spacing: 0.1em;
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Hover Mechanics */
+.work-card:hover .work-img-container img,
+.work-card:hover .work-img-placeholder {
+  transform: scale(1.025);
+}
+
+/* Card Metadata */
+.work-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.work-card-title {
+  font-family: var(--font-sans);
+  font-size: 18.5px;
+  font-weight: 500;
+  color: #FFFDBB;
+  margin: 0;
+}
+
+.work-card-tags {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  color: rgba(255, 253, 187, 0.5);
+  font-weight: 400;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 1024px) {
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 40px;
+  }
+  
+  .work-filter-label {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+    row-gap: 60px;
+    padding: 0 20px;
+  }
+
+  /* Reset Aspect Ratio mechanics for mobile linear scroll */
+  .work-card-ar-0, .work-card-ar-1, .work-card-ar-2, 
+  .work-card-ar-3, .work-card-ar-4, .work-card-ar-5 {
+    aspect-ratio: 1; /* Standardize */
+  }
+}

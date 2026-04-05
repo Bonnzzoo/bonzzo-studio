@@ -1,6 +1,5 @@
 "use client";
 
-import Navbar from "../components/Navbar";
 import InfoSection from "../components/InfoSection";
 import BioSection from "../components/BioSection";
 import ExpertiseSection from "../components/ExpertiseSection";
@@ -12,7 +11,6 @@ export default function InfoPage() {
 
   return (
     <>
-      <Navbar />
       <main className="info-page" style={{ paddingTop: "140px", minHeight: "100vh", background: "var(--bg-dark)" }}>
         <InfoSection />
         <BioSection />

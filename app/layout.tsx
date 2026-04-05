@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Koulen, Roboto_Mono, Albert_Sans, Playfair_Display } from "next/font/google";
+import { Koulen, Roboto_Mono, Albert_Sans, Playfair_Display, Space_Grotesk } from "next/font/google";
 import localFont from "next/font/local";
 import SmoothScroll from "./components/SmoothScroll";
+import Navbar from "./components/Navbar";
 import "./globals.css";
 
 const ateq = localFont({
@@ -46,6 +47,13 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-grotesk",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Youssef Sayed — UI/UX Designer & Creative Developer",
   description:
@@ -68,9 +76,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${koulen.variable} ${robotoMono.variable} ${albertSans.variable} ${ateq.variable} ${playfair.variable}`}
+      className={`${koulen.variable} ${robotoMono.variable} ${albertSans.variable} ${ateq.variable} ${playfair.variable} ${spaceGrotesk.variable}`}
     >
       <body>
+        <Navbar />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

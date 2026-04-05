@@ -1,98 +1,86 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 import { projectsData } from "../data/projects";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useScrollReveal } from "../hooks/useScrollReveal";
+import "./WorkPage.css";
 
 export default function WorkPage() {
-  useScrollReveal();
+  const allProjects = Object.values(projectsData);
 
-  const mainProjects = Object.values(projectsData).filter(
-    (p) => p.type === "project"
-  );
-  const landingPages = Object.values(projectsData).filter(
-    (p) => p.type === "landing-page"
-  );
+  // Setup the reveal observer for cards on mount
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    const cards = document.querySelectorAll(".work-card");
+    cards.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <>
-      <Navbar />
-      <main className="work-page" style={{ paddingTop: "140px", minHeight: "100vh", paddingBottom: "100px", background: "var(--bg-cream)" }}>
-        <div className="container">
-          
-          <div className="projects-heading reveal" style={{ justifyContent: "flex-start", marginBottom: "40px" }}>
-            <span className="projects-heading-text" style={{ fontSize: "clamp(3rem, 8vw, 8rem)", color: "var(--text-dark)", opacity: 1 }}>WORK</span>
-          </div>
+    <div className="work-page-dark">
+      
+      <main>
+        {/* HERO SECTION */}
+        <div className="work-hero">
+          <div className="work-filter-label">Industry: All</div>
+          <h1 className="work-hero-title">Our Work</h1>
+        </div>
 
-          {/* ── ALL PROJECTS LIST ── */}
-          <div className="projects-list-heading reveal">
-            <span className="projects-list-label">[ALL PROJECTS]</span>
-          </div>
+        {/* STAGGERED GRID SECTION */}
+        <div className="work-grid">
+          {allProjects.map((project, index) => {
+            // Apply the 6-step repeating pattern for aspect ratios
+            const patternIndex = index % 6;
 
-          <div className="projects-list">
-            {mainProjects.map((project) => (
+            return (
               <Link
                 href={`/projects/${project.slug}`}
                 key={project.slug}
-                className="project-list-item reveal"
-                id={`list-${project.slug}`}
+                className={`work-card work-card-ar-${patternIndex}`}
               >
-                <div className="project-list-left">
-                  <h3 className="project-list-title">{project.title}</h3>
-                  <span className="project-list-category">
-                    {project.category}
-                  </span>
+                <div className="work-img-container">
+                  {project.hasImage || project.slug === "you-app" ? (
+                    // In a real scenario you would have project.image mapped, 
+                    // for now we use placeholder path or generic placeholder 
+                    // if it doesn't exist in data
+                    <div className="work-img-placeholder">
+                      {project.title.toUpperCase()} — VIEW PROJECT
+                    </div>
+                  ) : (
+                    <div className="work-img-placeholder">
+                      {project.title.toUpperCase()} — VIEW PROJECT
+                    </div>
+                  )}
                 </div>
-                <div className="project-list-tags">
-                  {project.tags.slice(0, 3).map((tag) => (
-                    <span className="project-list-tag" key={tag}>
-                      {tag}
-                    </span>
-                  ))}
+
+                <div className="work-card-meta">
+                  <h3 className="work-card-title">{project.title}</h3>
+                  <div className="work-card-tags">
+                    {project.tags.slice(0, 3).join(" / ")}
+                  </div>
                 </div>
-                <span className="project-list-year">{project.year}</span>
-                <span className="project-list-arrow">→</span>
               </Link>
-            ))}
-          </div>
-
-          {/* ── LANDING PAGES ── */}
-          <div className="projects-list-heading reveal" style={{ marginTop: "100px" }}>
-            <span className="projects-list-label">[LANDING PAGES]</span>
-          </div>
-
-          <div className="projects-list">
-            {landingPages.map((project) => (
-              <Link
-                href={`/projects/${project.slug}`}
-                key={project.slug}
-                className="project-list-item reveal"
-                id={`list-${project.slug}`}
-              >
-                <div className="project-list-left">
-                  <h3 className="project-list-title">{project.title}</h3>
-                  <span className="project-list-category">
-                    {project.category}
-                  </span>
-                </div>
-                <div className="project-list-tags">
-                  {project.tags.slice(0, 3).map((tag) => (
-                    <span className="project-list-tag" key={tag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <span className="project-list-year">{project.year}</span>
-                <span className="project-list-arrow">→</span>
-              </Link>
-            ))}
-          </div>
-
+            );
+          })}
         </div>
       </main>
+
+      {/* Adjust Footer margin/colors if needed for dark mode, 
+          but usually Footer handles itself or we wrap it. */}
       <Footer />
-    </>
+    </div>
   );
 }

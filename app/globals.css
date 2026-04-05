@@ -24,7 +24,7 @@
   --font-mono: 'Roboto Mono', monospace;
   /* Script font handled by Next.js layout */
   --font-sans: 'Albert Sans', sans-serif;
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --transition-fast: 0.25s ease;
   --transition-smooth: 0.5s var(--ease-out-expo);
@@ -364,12 +364,32 @@ body::before {
 .hero-lux-title {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+  width: 100%;
   gap: 12px;
 }
 
 .hero-lux-title-row {
   overflow: hidden;
+  width: 100%;
+}
+
+.hero-lux-title-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-lux-meta-tag {
+  align-self: flex-start;
+  margin-top: 30px;
+}
+
+.hero-lux-title-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .hero-lux-name {
@@ -516,9 +536,10 @@ body::before {
 /* ===== INTRO SECTION ===== */
 .intro-section {
   position: relative;
-  padding: 0 0 80px;
+  padding: 140px 0 100px;
   background: var(--bg-dark);
   overflow: hidden;
+  border-top: 1px solid var(--border-light);
 }
 
 .intro-section-bg {
@@ -541,10 +562,21 @@ body::before {
   overflow: hidden;
 }
 
+.intro-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-light-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
 .intro-line {
   font-family: var(--font-display);
   font-size: clamp(3rem, 7.5vw, 7.5rem);
-  line-height: 1.05;
+  line-height: 1.08;
   color: var(--text-light);
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -556,27 +588,36 @@ body::before {
 
 .intro-line .bracket {
   font-family: var(--font-mono);
-  font-size: 0.4em;
-  color: var(--text-light-muted);
-  letter-spacing: 0.08em;
+  font-size: 0.35em;
+  color: var(--text-light-dim);
+  letter-spacing: 0.12em;
   vertical-align: super;
   position: relative;
-  top: -0.2em;
+  top: -0.15em;
+  opacity: 0.7;
 }
 
 .intro-line .script {
   font-family: var(--font-script);
-  font-style: normal;
+  font-style: italic;
   text-transform: none;
   color: var(--text-gold);
-  font-size: 0.55em;
+  font-size: 0.6em;
   position: relative;
   top: 0.05em;
 }
 
 .intro-line .arrow-down {
   display: inline-block;
-  margin-left: 0.2em;
+  margin-left: 0.15em;
+  color: var(--text-light-muted);
+  font-size: 0.6em;
+  animation: floatArrow 2s ease-in-out infinite;
+}
+
+@keyframes floatArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
 }
 
 /* ===== BIO SECTION ===== */
@@ -765,6 +806,7 @@ body::before {
 
 .project-card:hover .project-card-image {
   filter: brightness(0.95);
+  transform: scale(1.025);
 }
 
 .project-card-info {
@@ -925,6 +967,136 @@ body::before {
 
   .projects-list-heading {
     margin-top: 48px;
+  }
+}
+
+/* ===== WHAT I DO (DNY19-INSPIRED) ===== */
+.whatido {
+  position: relative;
+  background: #000;
+  padding: 140px 0 160px;
+  overflow: hidden;
+}
+
+.whatido-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.whatido-header {
+  margin-bottom: 80px;
+}
+
+.whatido-label {
+  display: block;
+  font-family: var(--font-grotesk);
+  font-size: 0.66rem;
+  font-weight: 400;
+  color: rgba(225, 230, 225, 0.8);
+  letter-spacing: 0.05em;
+  text-transform: none;
+  margin-bottom: 4px;
+}
+
+.whatido-title {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 12vw, 8.4rem);
+  font-weight: 400;
+  color: rgb(225, 230, 225);
+  text-transform: none;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+}
+
+.whatido-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.whatido-row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding: 16px 12px;
+  border-bottom: 1px solid rgba(225, 230, 225, 0.15);
+  text-decoration: none;
+  color: rgb(225, 230, 225);
+  transition: all 0.5s var(--ease-out-expo);
+  cursor: pointer;
+}
+
+.whatido-row:first-child {
+  border-top: none;
+}
+
+.whatido-row:hover {
+  padding-left: 28px;
+  background: rgba(225, 230, 225, 0.03);
+}
+
+.whatido-row:hover .whatido-service {
+  color: var(--text-gold);
+}
+
+.whatido-row:hover .whatido-arrow {
+  opacity: 1;
+  transform: translateX(8px);
+}
+
+.whatido-number {
+  font-family: var(--font-grotesk);
+  font-size: 1.16rem;
+  font-weight: 300;
+  color: rgba(225, 230, 225, 0.7);
+  letter-spacing: 0.02em;
+  min-width: 48px;
+  flex-shrink: 0;
+}
+
+.whatido-service {
+  font-family: var(--font-grotesk);
+  font-size: clamp(1.6rem, 3.5vw, 2.48rem);
+  font-weight: 300;
+  color: rgb(225, 230, 225);
+  letter-spacing: 0.01em;
+  transition: color 0.4s var(--ease-out-expo);
+  flex: 1;
+}
+
+.whatido-arrow {
+  font-family: var(--font-grotesk);
+  font-size: 1.2rem;
+  color: var(--text-gold);
+  opacity: 0;
+  transition: all 0.4s var(--ease-out-expo);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .whatido {
+    padding: 100px 0 120px;
+  }
+
+  .whatido-header {
+    margin-bottom: 48px;
+  }
+
+  .whatido-title {
+    font-size: clamp(3.5rem, 16vw, 6rem);
+  }
+
+  .whatido-row {
+    gap: 24px;
+    padding: 14px 8px;
+  }
+
+  .whatido-service {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+  }
+
+  .whatido-arrow {
+    display: none;
   }
 }
 
@@ -1890,6 +2062,26 @@ body::before {
   }
 
   /* Hero */
+  .hero-lux-name {
+    font-size: clamp(4rem, 20vw, 8rem);
+  }
+
+  .hero-lux-title-top {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .hero-lux-title-bottom {
+    justify-content: center;
+  }
+
+  .hero-lux-meta-tag {
+    align-self: center;
+    margin-top: 0;
+    text-align: center;
+  }
+
   .hero-letter {
     font-size: clamp(10rem, 25vw, 18rem);
   }

@@ -1,0 +1,225 @@
+/* ==========================================================================
+   SERVICES GRID & ANIMATIONS (GRIFLAN STYLE)
+   ========================================================================== */
+
+.services-page-wrap {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  min-height: 100vh;
+  position: relative;
+  padding-top: 100px; /* Account for navbar */
+}
+
+/* --- STICKY NAV --- */
+.services-section-nav {
+  position: sticky;
+  top: 60px; /* Below main navbar */
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+}
+
+.services-nav-item {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-light-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.services-nav-item.active {
+  color: #ff3333; /* Accent red similar to Griflan */
+}
+
+.services-nav-indicator {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  height: 2px;
+  background: #ff3333;
+  width: 0%;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.services-nav-item.active .services-nav-indicator {
+  width: 100%;
+}
+
+/* --- SECTION SPLIT PANE --- */
+.services-section {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.services-split {
+  display: grid;
+  grid-template-columns: 4fr 6fr;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Left Pane */
+.services-left {
+  padding: 80px 60px;
+  border-right: 1px solid var(--border-light);
+}
+
+.services-left-sticky {
+  position: sticky;
+  top: 160px; /* Keep below sticky nav */
+  max-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+}
+
+.services-title {
+  font-family: var(--font-script);
+  font-style: italic;
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 0.9;
+  text-transform: capitalize;
+  margin-top: -10px; /* offset optical baseline to perfectly align with images */
+  margin-bottom: 64px;
+  color: var(--text-light);
+}
+
+.services-description {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-light-muted);
+  max-width: 400px;
+  margin-bottom: 48px;
+}
+
+.services-tag-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.services-tag-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-light-muted);
+}
+
+/* Right Pane Masonry */
+.services-right {
+  padding: 80px 40px;
+  background: var(--bg-dark-alt);
+}
+
+.services-masonry {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.masonry-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.masonry-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger right column of masonry slightly */
+.masonry-item:nth-child(even) {
+  margin-top: 80px;
+}
+
+.masonry-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #222; /* Placeholder bg */
+}
+
+.masonry-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out-expo);
+}
+
+.masonry-item:hover .masonry-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.masonry-caption {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.masonry-caption span:first-child {
+  color: var(--text-light);
+}
+
+.masonry-caption span:last-child {
+  color: var(--text-light-muted);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .services-split {
+    grid-template-columns: 1fr;
+  }
+  
+  .services-left {
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+    padding: 60px 30px;
+  }
+  
+  .services-left-sticky {
+    position: relative;
+    top: auto;
+    max-height: none;
+  }
+
+  .services-right {
+    padding: 60px 30px;
+  }
+  
+  .services-masonry {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  
+  .masonry-item:nth-child(even) {
+    margin-top: 0;
+  }
+}

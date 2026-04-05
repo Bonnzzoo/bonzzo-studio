@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
-import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import type { ProjectData } from "@/app/data/projects";
 
@@ -11,7 +10,6 @@ export default function CaseStudyClient({ project }: { project: ProjectData }) {
 
   return (
     <>
-      <Navbar />
       <main className="case-study">
         <div className="container">
           <Link href="/#projects" className="back-link reveal">

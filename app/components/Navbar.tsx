@@ -18,7 +18,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`} id="navbar">
       <div className="container navbar-inner">
         <a href="#" className="navbar-logo">
-          YS
+          BONZO
         </a>
 
         <button
@@ -38,6 +38,9 @@ export default function Navbar() {
           </a>
           <a href="/work" onClick={() => setMenuOpen(false)}>
             Work
+          </a>
+          <a href="/services" onClick={() => setMenuOpen(false)}>
+            Services
           </a>
           <a href="/info" onClick={() => setMenuOpen(false)}>
             Info
