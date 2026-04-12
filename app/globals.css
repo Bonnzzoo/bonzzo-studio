@@ -970,133 +970,200 @@ body::before {
   }
 }
 
-/* ===== WHAT I DO (DNY19-INSPIRED) ===== */
-.whatido {
+/* ===== SERVICES SECTION (SIRNIK-INSPIRED) ===== */
+.sirnik-services {
   position: relative;
-  background: #000;
-  padding: 140px 0 160px;
+}
+
+.sirnik-card {
+  position: sticky;
+  top: 0;
+  background: var(--card-bg);
+  color: var(--card-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 80px clamp(24px, 5vw, 80px) 60px;
   overflow: hidden;
 }
 
-.whatido-inner {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 var(--container-padding);
-}
-
-.whatido-header {
-  margin-bottom: 80px;
-}
-
-.whatido-label {
-  display: block;
-  font-family: var(--font-grotesk);
-  font-size: 0.66rem;
-  font-weight: 400;
-  color: rgba(225, 230, 225, 0.8);
-  letter-spacing: 0.05em;
-  text-transform: none;
-  margin-bottom: 4px;
-}
-
-.whatido-title {
-  font-family: var(--font-display);
-  font-size: clamp(5rem, 12vw, 8.4rem);
-  font-weight: 400;
-  color: rgb(225, 230, 225);
-  text-transform: none;
-  line-height: 0.88;
-  letter-spacing: -0.02em;
-}
-
-.whatido-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.whatido-row {
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  padding: 16px 12px;
-  border-bottom: 1px solid rgba(225, 230, 225, 0.15);
-  text-decoration: none;
-  color: rgb(225, 230, 225);
-  transition: all 0.5s var(--ease-out-expo);
-  cursor: pointer;
-}
-
-.whatido-row:first-child {
-  border-top: none;
-}
-
-.whatido-row:hover {
-  padding-left: 28px;
-  background: rgba(225, 230, 225, 0.03);
-}
-
-.whatido-row:hover .whatido-service {
-  color: var(--text-gold);
-}
-
-.whatido-row:hover .whatido-arrow {
-  opacity: 1;
-  transform: translateX(8px);
-}
-
-.whatido-number {
-  font-family: var(--font-grotesk);
-  font-size: 1.16rem;
-  font-weight: 300;
-  color: rgba(225, 230, 225, 0.7);
-  letter-spacing: 0.02em;
-  min-width: 48px;
-  flex-shrink: 0;
-}
-
-.whatido-service {
-  font-family: var(--font-grotesk);
-  font-size: clamp(1.6rem, 3.5vw, 2.48rem);
-  font-weight: 300;
-  color: rgb(225, 230, 225);
-  letter-spacing: 0.01em;
-  transition: color 0.4s var(--ease-out-expo);
+/* ── Title Area ── */
+.sirnik-card-top {
+  position: relative;
   flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 40px;
 }
 
-.whatido-arrow {
+.sirnik-card-title {
   font-family: var(--font-grotesk);
-  font-size: 1.2rem;
-  color: var(--text-gold);
+  font-size: clamp(3rem, 12vw, 11rem);
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.06em;
+  margin: 0;
+  color: var(--card-text);
+  max-width: 85%;
   opacity: 0;
-  transition: all 0.4s var(--ease-out-expo);
-  flex-shrink: 0;
+  transform: translateY(60px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 1s var(--ease-out-expo);
 }
 
+.sirnik-visible .sirnik-card-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sirnik-title-line {
+  display: block;
+}
+
+.sirnik-card-index {
+  font-family: var(--font-grotesk);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 500;
+  color: var(--card-index);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s var(--ease-out-expo) 0.15s, transform 1s var(--ease-out-expo) 0.15s;
+}
+
+.sirnik-visible .sirnik-card-index {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Divider ── */
+.sirnik-divider {
+  height: 1px;
+  background: currentColor;
+  opacity: 0.12;
+  margin-bottom: 40px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s var(--ease-out-expo) 0.3s;
+}
+
+.sirnik-visible .sirnik-divider {
+  transform: scaleX(1);
+}
+
+/* ── Details Area ── */
+.sirnik-card-bottom {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr;
+  gap: 32px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-out-expo) 0.45s, transform 0.9s var(--ease-out-expo) 0.45s;
+}
+
+.sirnik-visible .sirnik-card-bottom {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sirnik-approach-label {
+  font-family: var(--font-grotesk);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--card-text);
+  opacity: 0.5;
+  padding-top: 3px;
+}
+
+.sirnik-desc-grid {
+  display: contents;
+}
+
+.sirnik-desc-col {
+  font-family: var(--font-grotesk);
+  font-size: 0.84rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--card-text);
+  opacity: 0.75;
+  margin: 0;
+}
+
+/* ── CTA ── */
+.sirnik-card-cta {
+  padding-top: 40px;
+  padding-left: 140px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease-out-expo) 0.6s, transform 0.8s var(--ease-out-expo) 0.6s;
+}
+
+.sirnik-visible .sirnik-card-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sirnik-cta-link {
+  font-family: var(--font-grotesk);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--card-text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid currentColor;
+  transition: gap 0.4s var(--ease-out-expo), opacity 0.3s ease;
+  opacity: 0.7;
+}
+
+.sirnik-cta-link:hover {
+  opacity: 1;
+  gap: 14px;
+}
+
+.sirnik-cta-arrow {
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.sirnik-cta-link:hover .sirnik-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Mobile ── */
 @media (max-width: 768px) {
-  .whatido {
-    padding: 100px 0 120px;
+  .sirnik-card {
+    min-height: auto;
+    padding: 60px 20px 48px;
   }
 
-  .whatido-header {
-    margin-bottom: 48px;
+  .sirnik-card-title {
+    font-size: clamp(2.8rem, 14vw, 5rem);
+    max-width: 80%;
   }
 
-  .whatido-title {
-    font-size: clamp(3.5rem, 16vw, 6rem);
+  .sirnik-card-index {
+    font-size: clamp(2rem, 8vw, 3.5rem);
   }
 
-  .whatido-row {
-    gap: 24px;
-    padding: 14px 8px;
+  .sirnik-card-bottom {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  .whatido-service {
-    font-size: clamp(1.2rem, 5vw, 1.8rem);
+  .sirnik-desc-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
-  .whatido-arrow {
-    display: none;
+  .sirnik-card-cta {
+    padding-left: 0;
   }
 }
 
