@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import SmoothScroll from "./components/SmoothScroll";
 import Navbar from "./components/Navbar";
 import WhatsAppWidget from "./components/WhatsAppWidget";
+import Preloader from "./components/Preloader";
 import "./globals.css";
 
 const ateq = localFont({
