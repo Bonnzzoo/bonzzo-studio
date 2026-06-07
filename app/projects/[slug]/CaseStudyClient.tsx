@@ -98,7 +98,7 @@ export default function CaseStudyClient({ project }: { project: ProjectData }) {
               Work <span>Flow</span>
             </h2>
             <div className="workflow-grid reveal reveal-delay-1">
-              {project.workflow.map((step, i) => (
+              {project.workflow && project.workflow.map((step, i) => (
                 <div
                   className={`workflow-cell workflow-step`}
                   key={step.number}
@@ -130,16 +130,16 @@ export default function CaseStudyClient({ project }: { project: ProjectData }) {
                 <table className="persona-table">
                   <thead>
                     <tr>
-                      {project.personas.headers.map((header) => (
+                      {project.personas.headers.map((header: string) => (
                         <th key={header}>{header}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
-                    {project.personas.rows.map((row) => (
+                    {project.personas.rows.map((row: any) => (
                       <tr key={row.label}>
                         <td>{row.label}</td>
-                        {row.values.map((val, i) => (
+                        {row.values.map((val: any, i: number) => (
                           <td key={i}>{val}</td>
                         ))}
                       </tr>
@@ -157,7 +157,7 @@ export default function CaseStudyClient({ project }: { project: ProjectData }) {
                 Shared <span>Behavior & Needs.</span>
               </h2>
               <ul className="shared-behavior-list reveal reveal-delay-1">
-                {project.sharedBehavior.map((item, i) => (
+                {project.sharedBehavior.map((item: string, i: number) => (
                   <li key={i}>{item}</li>
                 ))}
               </ul>

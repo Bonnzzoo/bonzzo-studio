@@ -7,73 +7,60 @@ export default function Footer() {
 
   return (
     <footer className="footer" id="footer">
-      {/* Top bar */}
-      <div className="footer-top-bar">
-        <span className="footer-name">[BONZO STUDIO]</span>
-        <span className="footer-copyright">[COPYRIGHT 2026]</span>
-      </div>
-
-      {/* Main content */}
-      <div className="footer-main">
-        {/* COME SAY HELLO */}
-        <div className="footer-hello">
-          <div className="footer-hello-text">
-            <span className="footer-hello-line">COME</span>
-            <span className="footer-hello-line script-line">say</span>
-            <span className="footer-hello-line">HELLO</span>
-          </div>
-          <span className="footer-hello-arabic">﹁مرحبا﹂</span>
+      <div className="footer-content-wrapper">
+        {/* Top bar */}
+        <div className="footer-top-bar">
+          <span className="footer-name">[BONZZO STUDIO]</span>
+          <span className="footer-copyright">[COPYRIGHT 2026]</span>
         </div>
 
-        {/* Empty center column for spacing */}
-        <div />
+        {/* Middle Section: Hello + Form */}
+        <div className="footer-middle-section">
+          <div className="footer-huge-hello">
+            <div className="footer-hello-row">
+              <span className="footer-hello-word">COME</span>
+              <span className="footer-hello-script" style={{ transform: "translateY(0.1em)" }}>say</span>
+            </div>
+            <div className="footer-hello-row">
+              <span className="footer-hello-word">HELLO</span>
+              <span className="footer-hello-arabic" style={{ transform: "translateY(-0.1em)" }}>﹁مرحبا﹂</span>
+            </div>
+            <p className="footer-hello-desc">
+              Have a project in mind? Let's talk about it. Fill out the form or reach out directly.
+            </p>
+          </div>
 
-        {/* Right column — socials + back to top */}
-        <div className="footer-right">
+          <div className="footer-contact-form">
+            <form className="contact-form">
+              <div className="form-group">
+                <input type="text" placeholder="NAME" required className="form-input" />
+              </div>
+              <div className="form-group">
+                <input type="email" placeholder="EMAIL" required className="form-input" />
+              </div>
+              <div className="form-group">
+                <textarea placeholder="MESSAGE" required className="form-textarea" rows={4}></textarea>
+              </div>
+              <button type="submit" className="form-submit">
+                SEND MESSAGE <span className="submit-arrow">↗</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* Bottom links */}
+        <div className="footer-bottom-links">
           <div className="footer-social-links">
-            <a
-              href="https://www.linkedin.com/in/youssefsayed207/"
-              className="footer-social-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="arrow">→</span> LINKEDIN
-            </a>
-            <a
-              href="https://www.instagram.com/youssefsayed_ui/"
-              className="footer-social-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="arrow">→</span> INSTAGRAM
-            </a>
-            <a
-              href="https://www.behance.net/youssefsayed19"
-              className="footer-social-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="arrow">→</span> BEHANCE
-            </a>
-            <a
-              href="https://wa.me/201017340140"
-              className="footer-social-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="arrow">→</span> WHATSAPP
-            </a>
+            <a href="https://www.linkedin.com/in/youssefsayed207/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a>
+            <a href="https://www.instagram.com/youssefsayed_ui/" target="_blank" rel="noopener noreferrer">INSTAGRAM ↗</a>
+            <a href="https://www.behance.net/youssefsayed19" target="_blank" rel="noopener noreferrer">BEHANCE ↗</a>
+            <a href="https://wa.me/201017340140" target="_blank" rel="noopener noreferrer">WHATSAPP ↗</a>
           </div>
 
           <button className="footer-back-top" onClick={scrollToTop}>
-            Back to top ↑
+            BACK TO TOP ↑
           </button>
         </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="footer-bottom">
-        <span>© 2026 BONZO</span>
       </div>
     </footer>
   );

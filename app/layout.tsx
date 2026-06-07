@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Koulen, Roboto_Mono, Albert_Sans, Playfair_Display, Space_Grotesk } from "next/font/google";
+import { Koulen, Roboto_Mono, Albert_Sans, Space_Grotesk } from "next/font/google";
 import localFont from "next/font/local";
 import SmoothScroll from "./components/SmoothScroll";
 import Navbar from "./components/Navbar";
+import WhatsAppWidget from "./components/WhatsAppWidget";
 import "./globals.css";
 
 const ateq = localFont({
@@ -39,11 +40,9 @@ const albertSans = Albert_Sans({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const guthen = localFont({
+  src: "../public/Guthen Jaqueline Regular.otf",
   variable: "--font-script",
-  subsets: ["latin"],
-  style: "italic",
-  weight: "500",
   display: "swap",
 });
 
@@ -76,9 +75,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${koulen.variable} ${robotoMono.variable} ${albertSans.variable} ${ateq.variable} ${playfair.variable} ${spaceGrotesk.variable}`}
+      suppressHydrationWarning
+      className={`${koulen.variable} ${robotoMono.variable} ${albertSans.variable} ${ateq.variable} ${guthen.variable} ${spaceGrotesk.variable}`}
     >
-      <body>
+      <body suppressHydrationWarning>
+        <WhatsAppWidget />
         <Navbar />
         <SmoothScroll>{children}</SmoothScroll>
       </body>

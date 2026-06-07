@@ -5,19 +5,9 @@ export default function IntroSection() {
       <div className="intro-content">
         <span className="intro-label reveal">[PHILOSOPHY]</span>
         <div className="intro-text-block reveal">
-          <div className="intro-line">
-            Shaping <span className="bracket">[IMPACTFUL]</span> digital
-          </div>
-          <div className="intro-line">
-            products <span className="bracket">[</span> through{" "}
-            <span className="bracket">]</span> <span className="arrow-down">↓</span>
-          </div>
-          <div className="intro-line">
-            data-driven research and
-          </div>
-          <div className="intro-line">
-            <span className="script">luxury</span> interaction design
-          </div>
+          <h2 className="intro-line" style={{ display: "block" }}>
+            Shaping impactful digital products through data-driven research and <span className="script" style={{ padding: "0 0.2em", fontSize: "2.5em", textTransform: "lowercase", display: "inline-block", verticalAlign: "middle", transform: "translateY(-0.15em)" }}>luxury</span> interaction design.
+          </h2>
         </div>
       </div>
     </section>

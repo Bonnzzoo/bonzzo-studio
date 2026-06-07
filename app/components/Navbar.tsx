@@ -18,7 +18,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`} id="navbar">
       <div className="container navbar-inner">
         <a href="#" className="navbar-logo">
-          BONZO
+          BONZZO
         </a>
 
         <button

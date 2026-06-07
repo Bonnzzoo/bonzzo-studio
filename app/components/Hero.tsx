@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="hero-lux-content">
         <h1 className="hero-lux-title">
           <div className="hero-lux-title-row hero-lux-title-top">
-            <span className="hero-lux-name fade-up">BONZO</span>
+            <span className="hero-lux-name fade-up">BONZZO</span>
             <span className="hero-lux-meta slide-down hero-lux-meta-tag" style={{ animationDelay: "0.3s" }}>
               ✦ SENIOR UI/UX<br />DESIGNER
             </span>
@@ -22,8 +22,12 @@ export default function Hero() {
             <span className="hero-lux-name fade-up" style={{ animationDelay: "0.1s" }}>STUDIO</span>
           </div>
         </h1>
-        <p className="hero-lux-subtitle fade-up" style={{ animationDelay: "0.2s" }}>
-          Senior UI/UX Designer crafting immersive digital <br className="hidden-mobile" /> experiences and luxury editorial platforms.
+        <p className="hero-lux-subtitle fade-up" style={{ animationDelay: "0.2s", maxWidth: "600px" }}>
+          Senior UI/UX Designer ✦ Shopify Developer ✦ Web Designer
+          <br />
+          <span style={{ fontSize: "0.75rem", opacity: 0.7, margin: "12px auto 0", display: "block", maxWidth: "400px" }}>
+            Crafting immersive experiences, custom Shopify stores, and vibe-coded websites.
+          </span>
         </p>
       </div>
 

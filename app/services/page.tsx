@@ -53,7 +53,7 @@ const servicesData = [
 ];
 
 export const metadata = {
-  title: "Services — Bonzo Studio",
+  title: "Services — Bonzzo Studio",
   description: "Our comprehensive capabilities from Branding to Digital experiences.",
 };
 
