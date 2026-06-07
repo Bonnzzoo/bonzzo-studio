@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import IntroSection from "./components/IntroSection";
 import WhatIDo from "./components/WhatIDo";
 import Projects from "./components/Projects";
+import ResumeSection from "./components/ResumeSection";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <IntroSection />
         <WhatIDo />
         <Projects />
+        <ResumeSection />
       </main>
       <Footer />
     </>

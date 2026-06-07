@@ -91,6 +91,7 @@ export default function RootLayout({
       className={`${koulen.variable} ${robotoMono.variable} ${albertSans.variable} ${ateq.variable} ${guthen.variable} ${spaceGrotesk.variable}`}
     >
       <body suppressHydrationWarning>
+        <Preloader />
         <WhatsAppWidget />
         <Navbar />
         <SmoothScroll>{children}</SmoothScroll>
