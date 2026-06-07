@@ -556,14 +556,19 @@ body::before {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .intro-text-block {
   overflow: hidden;
+  width: 100%;
 }
 
 .intro-label {
-  display: block;
+  display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 500;
@@ -581,6 +586,7 @@ body::before {
   color: var(--text-light);
   letter-spacing: 0.01em;
   max-width: 900px;
+  margin: 0 auto;
 }
 
 .intro-line .bracket {
