@@ -54,17 +54,29 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Youssef Sayed — UI/UX Designer & Creative Developer",
+  title: "Bonzzo Studio — Premium UI/UX Design & Creative Development",
   description:
-    "Portfolio of Youssef Sayed — Senior UI/UX Designer specializing in digital product design, brand identity, creative development, and Shopify solutions.",
+    "Portfolio of Bonzzo Studio — A digital agency specializing in premium digital product design, brand identity, creative development, and Shopify solutions.",
   keywords: [
-    "UI/UX Designer",
-    "Product Designer",
-    "Creative Developer",
-    "Shopify Developer",
-    "Portfolio",
-    "Youssef Sayed",
+    "UI/UX Design Agency",
+    "Product Design",
+    "Creative Development",
+    "Shopify Custom Stores",
+    "Bonzzo Studio",
+    "Digital Agency",
   ],
+  openGraph: {
+    title: "Bonzzo Studio — Premium UI/UX Design & Creative Development",
+    description: "A digital agency specializing in premium digital product design, brand identity, creative development, and Shopify solutions.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Bonzzo Studio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bonzzo Studio — Premium UI/UX Design & Creative Development",
+    description: "A digital agency specializing in premium digital product design, brand identity, creative development, and Shopify solutions.",
+  },
 };
 
 export default function RootLayout({
