@@ -42,20 +42,7 @@ export const projectsData: Record<string, ProjectData> = {
     liveLink: "https://you-app.net/en",
     description: "A smart travel companion app designed for seamless booking experiences and exclusive travel offers, unlocking adventures effortlessly.",
   },
-  trvly: {
-    slug: "trvly",
-    title: "Trvly",
-    category: "Social Travel App",
-    tags: ["UI/UX", "App Design", "UX Research"],
-    accent: "#FF6B6B",
-    company: "Crete Agency",
-    tools: "Figma, FigJam",
-    year: "2025",
-    duration: "2 months",
-    type: "ui-ux",
-    hasImage: false,
-    description: "A social-first travel platform combining short-form video discovery with seamless hotel booking.",
-  },
+
   autoclub: {
     slug: "autoclub",
     title: "AutoClub",
@@ -138,22 +125,7 @@ export const projectsData: Record<string, ProjectData> = {
     liveLink: "https://zajel.ai/en",
     description: "A high-conversion landing page for Zajel AI, featuring modern aesthetics and smooth animations.",
   },
-  manzuma: {
-    slug: "manzuma",
-    title: "Manzuma AI",
-    category: "AI Landing Page",
-    tags: ["Web Design", "UI/UX"],
-    accent: "#7B68EE",
-    company: "Crete Agency",
-    tools: "Next.js",
-    year: "2025",
-    duration: "2 weeks",
-    type: "vibe-website",
-    hasImage: true,
-    image: "/projects/landing-page/Manzuma.jpg",
-    liveLink: "https://manzumaai.com/en",
-    description: "A conversion-focused landing page for an AI solutions provider, driving consultation requests and demo bookings.",
-  },
+
   /* ─────────────────────────────────────
      SHOPIFY CUSTOM STORES
      ───────────────────────────────────── */
@@ -189,22 +161,7 @@ export const projectsData: Record<string, ProjectData> = {
     liveLink: "https://waggsgear.com",
     description: "A lifestyle brand offering high-quality, durable gear for dogs and their owners. Developed with an interactive collection grid and seamless sliding cart experience.",
   },
-  "stories-by-snaps": {
-    slug: "stories-by-snaps",
-    title: "Stories by Snaps",
-    category: "AI Creative Photography",
-    tags: ["shopify", "AI Modeling", "Visual Storytelling"],
-    accent: "#846dec",
-    company: "Snaps Ai",
-    tools: "shopify",
-    year: "2025",
-    duration: "1 month",
-    type: "shopify",
-    hasImage: true,
-    image: "/projects/shopify/Stories.png",
-    liveLink: "https://stories.bysnaps.ai",
-    description: "AI Stories featuring Egyptian AI Models. An elegant custom shopify experience built for the first creative AI platform in Egypt and MENA, prioritizing visual storytelling.",
-  },
+
   "plain-fashion": {
     slug: "plain-fashion",
     title: "Plain Fashion",
