@@ -1,7 +1,7 @@
 
 export default function Hero() {
   return (
-    <section className="hero-lux" id="hero">
+    <section className="hero-lux reveal" id="hero">
       <div className="hero-lux-bg" />
 
       {/* Top Meta Info */}

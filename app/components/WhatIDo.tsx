@@ -75,7 +75,7 @@ export default function WhatIDo() {
   }, []);
 
   return (
-    <section className="sirnik-services" id="services">
+    <section className="sirnik-services reveal" id="services">
       {services.map((service, i) => (
         <div
           key={service.index}

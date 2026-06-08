@@ -13,7 +13,7 @@ export default function Projects() {
   const projects = Object.values(projectsData);
 
   return (
-    <section className="projects-section" id="projects">
+    <section className="projects-section reveal" id="projects">
       <div className="projects-heading-wrapper">
         <div className="projects-heading reveal">
           <span className="projects-heading-text">SELECTED</span>
@@ -34,8 +34,8 @@ export default function Projects() {
               <div key={cat.id} className="project-category-block">
                 <h2 className="category-title reveal">{cat.title}</h2>
                 <div className="projects-vibe-grid">
-                  {categoryProjects.map((project) => (
-                    <div key={project.slug} className="vibe-card reveal">
+                  {categoryProjects.map((project, index) => (
+                    <div key={project.slug} className="vibe-card reveal" style={{ transitionDelay: `${index * 0.15}s` }}>
                       <div className="vibe-card-image-wrapper">
                         {project.liveLink ? (
                           <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="vibe-card-image" style={project.hasImage ? { backgroundImage: `url('${encodeURI(project.image || `/projects/${project.slug}.png`)}')` } : { background: project.accent }}>

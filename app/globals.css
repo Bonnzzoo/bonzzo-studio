@@ -91,7 +91,7 @@ ul, ol {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.8s cubic-bezier(0.85, 0, 0.15, 1), visibility 0.8s;
+  transition: opacity 0.5s cubic-bezier(0.85, 0, 0.15, 1), visibility 0.5s;
 }
 
 .preloader-hidden {
@@ -109,7 +109,7 @@ ul, ol {
   font-size: clamp(3rem, 10vw, 8rem);
   color: var(--text-light);
   letter-spacing: 0.05em;
-  animation: preloaderReveal 1.5s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+  animation: preloaderReveal 0.8s cubic-bezier(0.85, 0, 0.15, 1) forwards;
   transform: translateY(100%);
 }
 
@@ -153,8 +153,8 @@ body::before {
 /* ===== SCROLL ANIMATION UTILITIES ===== */
 .reveal {
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity var(--transition-editorial), transform var(--transition-editorial);
+  transform: translateY(30px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.visible {
@@ -394,6 +394,13 @@ body::before {
   text-transform: uppercase;
 }
 
+.hero-lux-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .hero-lux-content {
   position: relative;
   z-index: 2;
@@ -902,6 +909,11 @@ body::before {
   flex-direction: column;
   gap: 16px;
   transition: transform var(--transition-smooth);
+}
+
+.vibe-card.reveal {
+  transform: none; /* Override translateY to just fade in */
+  transition: opacity 1.2s ease-in-out;
 }
 
 .vibe-card:hover {
@@ -2528,15 +2540,14 @@ body::before {
 }
 
 /* ===== RESUME SECTION ===== */
-:root {
-  --resume-blue: #00A2FF;
+.resume-section-wrapper {
+  --resume-blue: var(--text-gold);
 }
 
 .resume-section {
   padding: 100px var(--container-padding);
-  background-color: #000;
+  background-color: var(--bg-dark);
   color: var(--text-light);
-  border-top: 1px solid var(--border-light-med);
 }
 
 .resume-header {
@@ -2575,12 +2586,55 @@ body::before {
   color: var(--text-light);
 }
 
+.resume-contact-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
 .resume-contact {
   display: flex;
   gap: 20px;
   font-family: var(--font-sans);
   font-size: 1.2rem;
   color: var(--text-light-muted);
+}
+
+.resume-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  background-color: var(--resume-blue);
+  color: var(--bg-dark);
+  border-radius: 50px;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+  background-color: var(--text-light);
+  color: var(--bg-dark);
+}
+
+.resume-btn-outline {
+  background-color: transparent;
+  color: var(--text-light);
+  border: 1px solid var(--border-light-med);
+}
+
+.resume-btn-outline:hover {
+  background-color: var(--text-light);
+  color: var(--bg-dark);
 }
 
 .contact-link {
@@ -2595,7 +2649,8 @@ body::before {
 
 .resume-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
+  max-width: 800px;
   gap: 80px;
 }
 
@@ -2609,13 +2664,19 @@ body::before {
   color: var(--resume-blue);
   margin-bottom: 25px;
   font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .resume-block-text {
   font-family: var(--font-sans);
   font-size: 1.2rem;
   line-height: 1.6;
+  color: var(--text-light-muted);
+}
+
+.resume-block-text strong {
   color: var(--text-light);
+  font-weight: 500;
 }
 
 .resume-blue-text {
@@ -2644,12 +2705,13 @@ body::before {
 
 .resume-icon-badge {
   padding: 8px 16px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-light-med);
+  background-color: #fff;
+  color: #000;
   border-radius: 8px;
   font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .resume-skills-list {

@@ -8,12 +8,6 @@ export default function Footer() {
   return (
     <footer className="footer" id="footer">
       <div className="footer-content-wrapper">
-        {/* Top bar */}
-        <div className="footer-top-bar">
-          <span className="footer-name">[BONZZO STUDIO]</span>
-          <span className="footer-copyright">[COPYRIGHT 2026]</span>
-        </div>
-
         {/* Middle Section: Hello + Form */}
         <div className="footer-middle-section">
           <div className="footer-huge-hello">

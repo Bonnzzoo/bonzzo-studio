@@ -5,18 +5,6 @@ import React from "react";
 export default function ResumeSection() {
   return (
     <section className="resume-section container" id="resume">
-      <div className="resume-header reveal">
-        <h2 className="resume-title">
-          <span className="resume-title-arabic">مرحباً</span>
-          <span className="resume-title-en">HELLO<span className="resume-accent">!</span></span>
-        </h2>
-        <div className="resume-contact">
-          <a href="tel:+201017340140" className="contact-link">+201017340140</a>
-          <span className="contact-separator">|</span>
-          <a href="mailto:yousefsayed207@gmail.com" className="contact-link">yousefsayed207@gmail.com</a>
-        </div>
-      </div>
-
       <div className="resume-grid">
         <div className="resume-col-left reveal">
           <div className="resume-block">
@@ -74,56 +62,6 @@ export default function ResumeSection() {
                 </ul>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="resume-col-right reveal" style={{ transitionDelay: "0.2s" }}>
-          <div className="resume-block">
-            <h3 className="resume-block-title">Experience</h3>
-            <ul className="resume-experience-list">
-              <li className="resume-exp-item">
-                <div className="resume-exp-header">
-                  <span className="resume-company">Crete Digital Solutions</span>
-                  <span className="resume-date resume-blue-text">(2026 - Current)</span>
-                </div>
-                <span className="resume-job">Senior UI/UX Designer</span>
-              </li>
-              <li className="resume-exp-item">
-                <div className="resume-exp-header">
-                  <span className="resume-company">Snaps Ai</span>
-                  <span className="resume-date resume-blue-text">(2025 - Current)</span>
-                </div>
-                <span className="resume-job">Product/Graphic Designer</span>
-              </li>
-              <li className="resume-exp-item">
-                <div className="resume-exp-header">
-                  <span className="resume-company">Mungiz</span>
-                  <span className="resume-date resume-blue-text">(2026 - Current)</span>
-                </div>
-                <span className="resume-job">Product Designer</span>
-              </li>
-              <li className="resume-exp-item">
-                <div className="resume-exp-header">
-                  <span className="resume-company">Crete Digital Solutions</span>
-                  <span className="resume-date resume-blue-text">(2023 - Current)</span>
-                </div>
-                <span className="resume-job">Junior - Mid UI/UX Designer</span>
-              </li>
-              <li className="resume-exp-item">
-                <div className="resume-exp-header">
-                  <span className="resume-company">Internship at Youm7</span>
-                  <span className="resume-date resume-blue-text">(2022)</span>
-                </div>
-                <span className="resume-job">UI/UX Intern</span>
-              </li>
-              <li className="resume-exp-item">
-                <div className="resume-exp-header">
-                  <span className="resume-company">Vision22</span>
-                  <span className="resume-date resume-blue-text">(2019)</span>
-                </div>
-                <span className="resume-job">Graphic Designer</span>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
