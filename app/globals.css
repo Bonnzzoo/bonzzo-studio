@@ -3060,6 +3060,19 @@ body::before {
 @media (max-width: 900px) {
   .about-inline-grid, .expertise-grid, .experience-grid, .skill-details {
     grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .expertise-left, .experience-left {
+    position: relative;
+    top: 0;
+  }
+  .exp-top-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .exp-role-block {
+    align-items: flex-start;
+    text-align: left;
   }
   .featured-label {
     display: none;
