@@ -17,7 +17,7 @@ interface ServiceItem {
 const services: ServiceItem[] = [
   {
     index: "01",
-    title: "Ui/Ux & Web Design\n& Full Scope Creation",
+    title: "Ui/Ux &\nWeb Design",
     description: [
       "I craft interfaces that balance visual clarity with purposeful interaction. Every screen, layout, and element is designed to serve the user while reinforcing the brand.",
       "From wireframes to high fidelity prototypes, my design process is built around structure, systems, and clear decision making resulting in products that feel composed and intentional.",
