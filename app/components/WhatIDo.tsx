@@ -17,10 +17,10 @@ interface ServiceItem {
 const services: ServiceItem[] = [
   {
     index: "01",
-    title: "UI/UX &\nWeb Design",
+    title: "Ui/Ux & Web Design\n& Full Scope Creation",
     description: [
       "I craft interfaces that balance visual clarity with purposeful interaction. Every screen, layout, and element is designed to serve the user while reinforcing the brand.",
-      "From wireframes to high-fidelity prototypes, my design process is built around structure, systems, and clear decision-making — resulting in products that feel composed and intentional.",
+      "From wireframes to high fidelity prototypes, my design process is built around structure, systems, and clear decision making resulting in products that feel composed and intentional.",
     ],
     cta: "Discuss design",
     bg: "#f0eeeb",
@@ -31,8 +31,8 @@ const services: ServiceItem[] = [
     index: "02",
     title: "Creative\nDevelopment",
     description: [
-      "I design and code high-performance landing pages, custom websites, and premium Shopify stores from scratch. My development process focuses on structure, performance, and clean implementation.",
-      "By combining thoughtful engineering with flexible systems, I create digital platforms that are fast, scalable, and easy to maintain — built to evolve over time.",
+      "I design and code high performance landing pages, custom websites, and premium Shopify stores from scratch. My development process focuses on structure, performance, and clean implementation.",
+      "By combining thoughtful engineering with flexible systems, I create digital platforms that are fast, scalable, and easy to maintain built to evolve over time.",
     ],
     cta: "Discuss development",
     bg: "#a8a8a0",
@@ -41,10 +41,10 @@ const services: ServiceItem[] = [
   },
   {
     index: "03",
-    title: "Full-Scope\nCreation",
+    title: "Full Scope\nCreation",
     description: [
-      "I take responsibility for the full creation of digital products — from early definition to final release. The process begins with understanding the product, its goals, and the problems it needs to solve.",
-      "Design and development are treated as one continuous system, allowing the product to remain coherent throughout its creation. The result is a clear, well-structured digital product built to communicate value.",
+      "I take responsibility for the full creation of digital products from early definition to final release. The process begins with understanding the product, its goals, and the problems it needs to solve.",
+      "Design and development are treated as one continuous system, allowing the product to remain coherent throughout its creation. The result is a clear, well structured digital product built to communicate value.",
     ],
     cta: "Discuss your product",
     bg: "#2b2b2b",

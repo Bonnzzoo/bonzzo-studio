@@ -35,11 +35,11 @@ export default function Hero() {
           </div>
         </h1>
         <Reveal delay={0.2} direction="up" width="100%">
-          <p className="hero-lux-subtitle" style={{ maxWidth: "600px" }}>
+          <p className="hero-lux-subtitle" style={{ maxWidth: "600px", textAlign: "left", margin: "0" }}>
             Senior UI/UX Designer ✦ Shopify Developer ✦ Web Designer
             <br />
-            <span style={{ fontSize: "0.75rem", opacity: 0.7, margin: "12px auto 0", display: "block", maxWidth: "400px" }}>
-              Crafting immersive experiences, custom Shopify stores, and vibe-coded websites.
+            <span style={{ fontSize: "0.75rem", opacity: 0.7, margin: "12px 0 0", display: "block", maxWidth: "400px" }}>
+              Crafting immersive experiences, custom Shopify stores, and vibe coded websites.
             </span>
           </p>
         </Reveal>
