@@ -154,6 +154,7 @@ export const projectsData: Record<string, ProjectData> = {
     type: "vibe-website",
     hasImage: true,
     image: "/projects/landing-page/Mega Plug.jpg",
+    liveLink: "https://mega-plug01-282018915944.europe-west1.run.app/",
     description: "Egypt's premier EV charging network platform with a premium dark-mode interface and real-time interactive mapping.",
   },
   manzuma: {
