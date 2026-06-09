@@ -2934,6 +2934,7 @@ body::before {
   grid-template-columns: 1fr max-content;
   gap: 40px;
   align-items: flex-start;
+  width: 100%;
 }
 
 .exp-item:first-child {
