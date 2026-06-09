@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { projectsData } from "../data/projects";
+import Reveal from "./animations/Reveal";
+import StaggeredList, { StaggerItem } from "./animations/StaggeredList";
 
 const categories = [
   { id: "vibe-website", title: "Landing Pages" },
@@ -13,15 +15,17 @@ export default function Projects() {
   const projects = Object.values(projectsData);
 
   return (
-    <section className="projects-section reveal" id="projects">
+    <section className="projects-section" id="projects">
       <div className="projects-heading-wrapper">
-        <div className="projects-heading reveal">
-          <span className="projects-heading-text">SELECTED</span>
-          <div className="projects-heading-arabic">
-            <span>﹁أعمالي﹂</span>
+        <Reveal delay={0.1}>
+          <div className="projects-heading">
+            <span className="projects-heading-text">SELECTED</span>
+            <div className="projects-heading-arabic">
+              <span>﹁أعمالي﹂</span>
+            </div>
+            <span className="projects-heading-text">WORKS</span>
           </div>
-          <span className="projects-heading-text">WORKS</span>
-        </div>
+        </Reveal>
       </div>
 
       <div className="projects-grid-wrapper">
@@ -32,10 +36,13 @@ export default function Projects() {
 
             return (
               <div key={cat.id} className="project-category-block">
-                <h2 className="category-title reveal">{cat.title}</h2>
-                <div className="projects-vibe-grid">
+                <Reveal direction="up" delay={0.1}>
+                  <h2 className="category-title">{cat.title}</h2>
+                </Reveal>
+                
+                <StaggeredList className="projects-vibe-grid" delayOffset={0.2} staggerChildren={0.15}>
                   {categoryProjects.map((project, index) => (
-                    <div key={project.slug} className="vibe-card reveal" style={{ transitionDelay: `${index * 0.15}s` }}>
+                    <StaggerItem key={project.slug} className="vibe-card">
                       <div className="vibe-card-image-wrapper">
                         {project.liveLink ? (
                           <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="vibe-card-image" style={project.hasImage ? { backgroundImage: `url('${encodeURI(project.image || `/projects/${project.slug}.png`)}')` } : { background: project.accent }}>
@@ -58,12 +65,13 @@ export default function Projects() {
                           ))}
                         </div>
                       </div>
-                    </div>
+                    </StaggerItem>
                   ))}
-                </div>
+                </StaggeredList>
               </div>
             );
           })}
+
         </div>
       </div>
     </section>

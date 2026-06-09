@@ -2,11 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Reveal from "./animations/Reveal";
 
 interface ServiceItem {
   title: string;
   index: string;
-  description: [string, string];
+  description: string[];
   cta: string;
   bg: string;
   textColor: string;
@@ -15,11 +16,11 @@ interface ServiceItem {
 
 const services: ServiceItem[] = [
   {
-    title: "UI/UX &\nWeb Design",
     index: "01",
+    title: "UI/UX &\nWeb Design",
     description: [
-      "We craft interfaces that balance visual clarity with purposeful interaction. Every screen, layout, and element is designed to serve the user while reinforcing the brand.",
-      "From wireframes to high-fidelity prototypes, the design process is built around structure, systems, and clear decision-making — resulting in products that feel composed and intentional.",
+      "I craft interfaces that balance visual clarity with purposeful interaction. Every screen, layout, and element is designed to serve the user while reinforcing the brand.",
+      "From wireframes to high-fidelity prototypes, my design process is built around structure, systems, and clear decision-making — resulting in products that feel composed and intentional.",
     ],
     cta: "Discuss design",
     bg: "#f0eeeb",
@@ -27,11 +28,11 @@ const services: ServiceItem[] = [
     indexColor: "rgba(10,10,10,0.2)",
   },
   {
-    title: "Creative\nDevelopment",
     index: "02",
+    title: "Creative\nDevelopment",
     description: [
-      "We build websites and digital products using Next.js, React, and modern frameworks. Our development process focuses on structure, performance, and clean implementation.",
-      "By combining thoughtful engineering with flexible systems, we create digital platforms that are fast, scalable, and easy to maintain — built to evolve over time.",
+      "I design and code high-performance landing pages, custom websites, and premium Shopify stores from scratch. My development process focuses on structure, performance, and clean implementation.",
+      "By combining thoughtful engineering with flexible systems, I create digital platforms that are fast, scalable, and easy to maintain — built to evolve over time.",
     ],
     cta: "Discuss development",
     bg: "#a8a8a0",
@@ -39,10 +40,10 @@ const services: ServiceItem[] = [
     indexColor: "rgba(10,10,10,0.15)",
   },
   {
-    title: "Full-Scope\nCreation",
     index: "03",
+    title: "Full-Scope\nCreation",
     description: [
-      "We take responsibility for the full creation of digital products — from early definition to final release. The process begins with understanding the product, its goals, and the problems it needs to solve.",
+      "I take responsibility for the full creation of digital products — from early definition to final release. The process begins with understanding the product, its goals, and the problems it needs to solve.",
       "Design and development are treated as one continuous system, allowing the product to remain coherent throughout its creation. The result is a clear, well-structured digital product built to communicate value.",
     ],
     cta: "Discuss your product",
@@ -53,33 +54,11 @@ const services: ServiceItem[] = [
 ];
 
 export default function WhatIDo() {
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("sirnik-visible");
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    sectionRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section className="sirnik-services reveal" id="services">
+    <section className="sirnik-services" id="services">
       {services.map((service, i) => (
         <div
           key={service.index}
-          ref={(el) => { sectionRefs.current[i] = el; }}
           className="sirnik-card"
           style={
             {
@@ -91,35 +70,48 @@ export default function WhatIDo() {
         >
           {/* Title area */}
           <div className="sirnik-card-top">
-            <h2 className="sirnik-card-title">
-              {service.title.split("\n").map((line, j) => (
-                <span key={j} className="sirnik-title-line">
-                  {line}
-                </span>
-              ))}
-            </h2>
-            <span className="sirnik-card-index">{service.index}</span>
+            <Reveal direction="up" delay={0.1}>
+              <h2 className="sirnik-card-title">
+                {service.title.split("\n").map((line, j) => (
+                  <span key={j} className="sirnik-title-line">
+                    {line}
+                  </span>
+                ))}
+              </h2>
+            </Reveal>
+            <Reveal direction="down" delay={0.2}>
+              <span className="sirnik-card-index">{service.index}</span>
+            </Reveal>
           </div>
 
-          {/* Divider */}
-          <div className="sirnik-divider" />
+          <Reveal delay={0.3} width="100%">
+            <div className="sirnik-divider"></div>
+          </Reveal>
 
           {/* Details area */}
           <div className="sirnik-card-bottom">
-            <span className="sirnik-approach-label">Approach</span>
+            <Reveal direction="up" delay={0.4}>
+              <span className="sirnik-approach-label">Approach</span>
+            </Reveal>
             <div className="sirnik-desc-grid">
-              <p className="sirnik-desc-col">{service.description[0]}</p>
-              <p className="sirnik-desc-col">{service.description[1]}</p>
+              <Reveal direction="up" delay={0.5}>
+                <p className="sirnik-desc-col">{service.description[0]}</p>
+              </Reveal>
+              <Reveal direction="up" delay={0.6}>
+                <p className="sirnik-desc-col">{service.description[1]}</p>
+              </Reveal>
             </div>
           </div>
 
           {/* CTA */}
-          <div className="sirnik-card-cta">
-            <Link href="/services" className="sirnik-cta-link">
-              {service.cta}
-              <span className="sirnik-cta-arrow">→</span>
-            </Link>
-          </div>
+          <Reveal direction="up" delay={0.7}>
+            <div className="sirnik-card-cta">
+              <Link href="/services" className="sirnik-cta-link">
+                {service.cta}
+                <span className="sirnik-cta-arrow">→</span>
+              </Link>
+            </div>
+          </Reveal>
         </div>
       ))}
     </section>
