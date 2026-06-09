@@ -74,9 +74,9 @@ export const projectsData: Record<string, ProjectData> = {
     image: "/projects/ui-ux/Boom Room.png",
     description: "A high-energy promotional platform capturing a vibrant entertainment venue atmosphere.",
   },
-  "mazad-qatar": {
-    slug: "mazad-qatar",
-    title: "Mazad Qatar",
+  "mazad-el-arab": {
+    slug: "mazad-el-arab",
+    title: "Mazad el Arab",
     category: "Auction Platform",
     tags: ["UI/UX", "App Design"],
     accent: "#D4AF37",
@@ -87,7 +87,7 @@ export const projectsData: Record<string, ProjectData> = {
     type: "ui-ux",
     hasImage: true,
     image: "/projects/ui-ux/Mazad Ell Arab.jpg",
-    liveLink: "https://mzadqatar.com/en",
+    liveLink: "https://mzadarab.com/",
     description: "A digital auction platform for the Arab market, enabling real-time bidding on vehicles, properties, and collectibles.",
   },
   "mohamed-fahmy": {
