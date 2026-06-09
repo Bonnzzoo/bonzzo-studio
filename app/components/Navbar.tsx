@@ -33,13 +33,13 @@ export default function Navbar() {
         </button>
 
         <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
-          <a href="#hero" onClick={() => setMenuOpen(false)}>
+          <a href="/#hero" onClick={() => setMenuOpen(false)}>
             Home
           </a>
-          <a href="#projects" onClick={() => setMenuOpen(false)}>
+          <a href="/#projects" onClick={() => setMenuOpen(false)}>
             Work
           </a>
-          <a href="#services" onClick={() => setMenuOpen(false)}>
+          <a href="/#services" onClick={() => setMenuOpen(false)}>
             Services
           </a>
         </div>
