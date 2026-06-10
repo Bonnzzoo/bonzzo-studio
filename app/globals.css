@@ -3006,12 +3006,13 @@ body::before {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: auto;
   align-items: flex-end;
-  text-align: right;
 }
 
 .exp-role-block > * {
-  width: max-content;
+  display: block;
+  width: 100%;
   text-align: right;
 }
 
@@ -3144,8 +3145,7 @@ body::before {
     gap: 16px;
   }
   .exp-role-block {
-    align-items: flex-start;
-    text-align: left;
+    align-items: flex-end;
   }
   .featured-label {
     display: none;
