@@ -30,15 +30,16 @@ export default function Footer() {
 
           <Reveal delay={0.3} width="100%">
             <div className="footer-contact-form">
-              <form className="contact-form">
+              <form action="https://api.web3forms.com/submit" method="POST" className="contact-form">
+                <input type="hidden" name="access_key" value="0b5b4147-4832-42c5-b2f7-3fe30f4169d3" />
                 <div className="form-group">
-                  <input type="text" placeholder="NAME" required className="form-input" />
+                  <input type="text" name="name" placeholder="NAME" required className="form-input" />
                 </div>
                 <div className="form-group">
-                  <input type="email" placeholder="EMAIL" required className="form-input" />
+                  <input type="email" name="email" placeholder="EMAIL" required className="form-input" />
                 </div>
                 <div className="form-group">
-                  <textarea placeholder="MESSAGE" required className="form-textarea" rows={4}></textarea>
+                  <textarea name="message" placeholder="MESSAGE" required className="form-textarea" rows={4}></textarea>
                 </div>
                 <button type="submit" className="form-submit">
                   SEND MESSAGE <span className="submit-arrow">↗</span>
