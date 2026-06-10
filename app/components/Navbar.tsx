@@ -50,8 +50,6 @@ export default function Navbar() {
         </div>
 
         <button className="navbar-cta" onClick={openContact}>Let&apos;s Create</button>
-
-        <span className="navbar-year">[2026]</span>
       </div>
     </nav>
   );
