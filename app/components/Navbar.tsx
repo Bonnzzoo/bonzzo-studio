@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useContact } from "./ContactContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { openContact } = useContact();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,12 +44,12 @@ export default function Navbar() {
           <a href="/#services" onClick={() => setMenuOpen(false)}>
             Services
           </a>
-          <a href="/#footer" className="navbar-cta-mobile" onClick={() => setMenuOpen(false)}>
+          <button className="navbar-cta-mobile" onClick={() => { setMenuOpen(false); openContact(); }}>
             Let&apos;s Create
-          </a>
+          </button>
         </div>
 
-        <a href="/#footer" className="navbar-cta">Let&apos;s Create</a>
+        <button className="navbar-cta" onClick={openContact}>Let&apos;s Create</button>
 
         <span className="navbar-year">[2026]</span>
       </div>

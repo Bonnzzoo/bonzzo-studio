@@ -5,6 +5,7 @@ import SmoothScroll from "./components/SmoothScroll";
 import Navbar from "./components/Navbar";
 import WhatsAppWidget from "./components/WhatsAppWidget";
 import Preloader from "./components/Preloader";
+import { ContactProvider } from "./components/ContactContext";
 import "./globals.css";
 
 const ateq = localFont({
@@ -92,10 +93,12 @@ export default function RootLayout({
       className={`${koulen.variable} ${robotoMono.variable} ${albertSans.variable} ${ateq.variable} ${guthen.variable} ${spaceGrotesk.variable}`}
     >
       <body suppressHydrationWarning>
-        <Preloader />
-        <WhatsAppWidget />
-        <Navbar />
-        <SmoothScroll>{children}</SmoothScroll>
+        <ContactProvider>
+          <Preloader />
+          <WhatsAppWidget />
+          <Navbar />
+          <SmoothScroll>{children}</SmoothScroll>
+        </ContactProvider>
       </body>
     </html>
   );

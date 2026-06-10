@@ -1836,7 +1836,7 @@ body::before {
     font-size: clamp(2.5rem, 10vw, 4rem);
   }
   .footer-contact-form {
-    max-width: 100%;
+    width: 100%;
   }
 }
 
@@ -3150,4 +3150,90 @@ body::before {
   .featured-label {
     display: none;
   }
+}
+
+/* ==========================================================================
+   CONTACT MODAL
+   ========================================================================== */
+
+.contact-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.contact-modal-content {
+  background: var(--bg-dark);
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  width: 90%;
+  max-width: 500px;
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.contact-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: var(--text-light-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.contact-modal-close:hover {
+  color: var(--text-light);
+}
+
+.contact-modal-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  line-height: 1;
+  text-align: center;
+}
+
+.contact-modal-desc {
+  font-family: var(--font-sans);
+  color: var(--text-light-muted);
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.modal-form {
+  width: 100%;
+}
+
+.modal-success-state {
+  min-height: 300px;
+  background: transparent;
+  border: none;
+  padding: 20px 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
