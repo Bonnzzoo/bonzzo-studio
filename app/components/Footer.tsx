@@ -1,10 +1,43 @@
 "use client";
 
+import { useState } from "react";
 import Reveal from "./animations/Reveal";
 
 export default function Footer() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("submitting");
+
+    const formData = new FormData(e.currentTarget);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      });
+      const result = await response.json();
+      if (response.status === 200) {
+        setStatus("success");
+      } else {
+        console.error(result);
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
   };
 
   return (
@@ -30,21 +63,33 @@ export default function Footer() {
 
           <Reveal delay={0.3} width="100%">
             <div className="footer-contact-form">
-              <form action="https://api.web3forms.com/submit" method="POST" className="contact-form">
-                <input type="hidden" name="access_key" value="0b5b4147-4832-42c5-b2f7-3fe30f4169d3" />
-                <div className="form-group">
-                  <input type="text" name="name" placeholder="NAME" required className="form-input" />
+              {status === "success" ? (
+                <div className="form-success-state">
+                  <div className="success-icon">✦</div>
+                  <h3>MESSAGE RECEIVED</h3>
+                  <p>Thanks for reaching out! I'll get back to you as soon as possible.</p>
+                  <button onClick={() => setStatus("idle")} className="form-submit" style={{ marginTop: '24px' }}>
+                    SEND ANOTHER <span className="submit-arrow">↗</span>
+                  </button>
                 </div>
-                <div className="form-group">
-                  <input type="email" name="email" placeholder="EMAIL" required className="form-input" />
-                </div>
-                <div className="form-group">
-                  <textarea name="message" placeholder="MESSAGE" required className="form-textarea" rows={4}></textarea>
-                </div>
-                <button type="submit" className="form-submit">
-                  SEND MESSAGE <span className="submit-arrow">↗</span>
-                </button>
-              </form>
+              ) : (
+                <form onSubmit={handleSubmit} className="contact-form">
+                  <input type="hidden" name="access_key" value="0b5b4147-4832-42c5-b2f7-3fe30f4169d3" />
+                  <div className="form-group">
+                    <input type="text" name="name" placeholder="NAME" required className="form-input" disabled={status === "submitting"} />
+                  </div>
+                  <div className="form-group">
+                    <input type="email" name="email" placeholder="EMAIL" required className="form-input" disabled={status === "submitting"} />
+                  </div>
+                  <div className="form-group">
+                    <textarea name="message" placeholder="MESSAGE" required className="form-textarea" rows={4} disabled={status === "submitting"}></textarea>
+                  </div>
+                  {status === "error" && <p className="form-error-msg">Something went wrong. Please try again.</p>}
+                  <button type="submit" className="form-submit" disabled={status === "submitting"}>
+                    {status === "submitting" ? "SENDING..." : "SEND MESSAGE"} <span className="submit-arrow">↗</span>
+                  </button>
+                </form>
+              )}
             </div>
           </Reveal>
         </div>
