@@ -2931,8 +2931,8 @@ body::before {
 }
 
 .exp-top-row {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  display: flex;
+  justify-content: space-between;
   gap: 40px;
   align-items: flex-start;
   width: 100%;
@@ -2949,8 +2949,8 @@ body::before {
 }
 
 .exp-role-block {
-  align-items: flex-start;
-  text-align: left;
+  align-items: flex-end;
+  text-align: right;
 }
 
 .exp-company, .exp-date {
