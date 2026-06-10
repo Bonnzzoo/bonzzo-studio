@@ -44,6 +44,8 @@ export default function Navbar() {
           </a>
         </div>
 
+        <a href="/#footer" className="navbar-cta">Let&apos;s Create</a>
+
         <span className="navbar-year">[2026]</span>
       </div>
     </nav>

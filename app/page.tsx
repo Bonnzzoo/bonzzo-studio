@@ -16,10 +16,10 @@ export default function Home() {
         <Hero />
         <IntroSection />
         <WhatIDo />
+        <Projects />
         <AboutMe />
         <ExpertiseSkills />
         <ExperienceTimeline />
-        <Projects />
       </main>
       <Footer />
     </>

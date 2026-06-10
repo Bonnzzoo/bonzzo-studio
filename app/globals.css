@@ -260,6 +260,27 @@ body::before {
   align-items: center;
 }
 
+.navbar-cta {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--bg-dark);
+  background: var(--text-light);
+  padding: 10px 20px;
+  border-radius: 100px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all var(--transition-smooth);
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid var(--text-light);
+}
+
+.navbar-cta:hover {
+  background: transparent;
+  color: var(--text-light);
+}
+
 .navbar-links a {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -2302,6 +2323,20 @@ body::before {
     display: none;
   }
 
+  .navbar-cta {
+    display: none;
+  }
+
+  .hero-lux-subtitle {
+    margin-top: 80px;
+  }
+
+  .projects-heading-arabic span {
+    writing-mode: horizontal-tb;
+    text-orientation: initial;
+    letter-spacing: 0.15em;
+  }
+
   /* Hero */
   .hero-lux-name {
     font-size: clamp(4rem, 20vw, 8rem);
@@ -2931,8 +2966,8 @@ body::before {
 }
 
 .exp-top-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: flex-start;
   width: 100%;
