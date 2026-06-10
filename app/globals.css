@@ -2953,11 +2953,20 @@ body::before {
   text-align: right;
 }
 
-.exp-company, .exp-date {
+.exp-company {
   font-family: var(--font-grotesk);
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   line-height: 1;
   margin: 0;
+}
+
+.exp-date {
+  font-family: var(--font-grotesk);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+  white-space: nowrap;
 }
 
 .exp-location, .exp-role {
