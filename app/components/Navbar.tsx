@@ -42,6 +42,9 @@ export default function Navbar() {
           <a href="/#services" onClick={() => setMenuOpen(false)}>
             Services
           </a>
+          <a href="/#footer" className="navbar-cta-mobile" onClick={() => setMenuOpen(false)}>
+            Let&apos;s Create
+          </a>
         </div>
 
         <a href="/#footer" className="navbar-cta">Let&apos;s Create</a>

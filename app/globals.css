@@ -281,6 +281,10 @@ body::before {
   color: var(--text-light);
 }
 
+.navbar-cta-mobile {
+  display: none;
+}
+
 .navbar-links a {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -2327,6 +2331,21 @@ body::before {
     display: none;
   }
 
+  .navbar-cta-mobile {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--bg-dark);
+    background: var(--text-light);
+    padding: 12px 24px;
+    border-radius: 100px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 10px;
+  }
+
   .hero-lux-subtitle {
     margin-top: 80px;
   }
@@ -2966,8 +2985,8 @@ body::before {
 }
 
 .exp-top-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
   gap: 40px;
   align-items: flex-start;
   width: 100%;
@@ -2984,7 +3003,15 @@ body::before {
 }
 
 .exp-role-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   align-items: flex-end;
+  text-align: right;
+}
+
+.exp-role-block > * {
+  width: max-content;
   text-align: right;
 }
 
@@ -3113,7 +3140,7 @@ body::before {
     top: 0;
   }
   .exp-top-row {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 16px;
   }
   .exp-role-block {
