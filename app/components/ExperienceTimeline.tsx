@@ -4,7 +4,7 @@ import Reveal from "./animations/Reveal";
 export default function ExperienceTimeline() {
   const experiences = [
     {
-      company: "CRETE DIGITAL SOLUTIONS",
+      company: "CRETE AI LABS",
       location: "[CAIRO, EGYPT]",
       date: "2025 - CURRENT",
       role: "SENIOR UI/UX DESIGNER",
@@ -35,7 +35,7 @@ export default function ExperienceTimeline() {
       ]
     },
     {
-      company: "CRETE DIGITAL SOLUTIONS",
+      company: "CRETE AI LABS",
       location: "[CAIRO, EGYPT]",
       date: "2023 - 2025",
       role: "JUNIOR - MID UI/UX DESIGNER",
