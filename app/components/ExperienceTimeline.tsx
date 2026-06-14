@@ -25,7 +25,7 @@ export default function ExperienceTimeline() {
       ]
     },
     {
-      company: "MUNJIZ",
+      company: "ZAJEL",
       location: "[CAIRO, EGYPT]",
       date: "2026 - CURRENT",
       role: "PRODUCT DESIGNER",
