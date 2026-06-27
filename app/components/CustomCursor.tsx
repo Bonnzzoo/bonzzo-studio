@@ -80,7 +80,7 @@ export default function CustomCursor() {
         }
       `}} />
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 rounded-full pointer-events-none mix-blend-difference"
+        className="fixed top-0 left-0 w-10 h-10 rounded-full pointer-events-none"
         style={{
           x: smoothX,
           y: smoothY,
@@ -93,7 +93,8 @@ export default function CustomCursor() {
         animate={{
           scale: isClicking ? 0.8 : isHovering ? 1.5 : 1,
           backgroundColor: isHovering ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0)",
-          border: isHovering ? "0px solid rgba(255, 255, 255, 0)" : "1px solid rgba(255, 255, 255, 0.4)",
+          border: isHovering ? "0px solid rgba(255, 255, 255, 0)" : "2px solid rgba(255, 255, 255, 0.5)",
+          mixBlendMode: isHovering ? "difference" : "normal"
         }}
         transition={{
           scale: { duration: 0.2 },
@@ -111,9 +112,9 @@ export default function CustomCursor() {
         </motion.div>
       </motion.div>
       
-      {/* Core Dot (Optional, adds precision) */}
+      {/* Core Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1 h-1 bg-white rounded-full pointer-events-none mix-blend-difference"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-white rounded-full pointer-events-none mix-blend-difference"
         style={{
           x: mouseX,
           y: mouseY,
