@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring, useScroll, useVelocity, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const mouseX = useMotionValue(0);
@@ -15,13 +15,6 @@ export default function CustomCursor() {
   const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
-
-  // Scroll velocity for stretch effect
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, { damping: 50, stiffness: 400 });
-  const velocityScale = useTransform(smoothVelocity, [-1000, 0, 1000], [1.15, 1, 1.15]);
-  const velocityScaleX = useTransform(smoothVelocity, [-1000, 0, 1000], [0.85, 1, 0.85]);
 
   useEffect(() => {
     // Hide on touch devices
@@ -86,8 +79,6 @@ export default function CustomCursor() {
           y: smoothY,
           marginLeft: "-20px",
           marginTop: "-20px",
-          scaleX: velocityScaleX,
-          scaleY: velocityScale,
           zIndex: 99999,
         }}
         animate={{
