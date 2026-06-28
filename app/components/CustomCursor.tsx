@@ -8,7 +8,8 @@ export default function CustomCursor() {
   const mouseY = useMotionValue(-100);
 
   const [isHovering, setIsHovering] = useState(false);
-  const [isMobile, setIsMobile] = useState(true); // Default to true to prevent flash, then check
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
   // Smooth follow physics
   const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
@@ -27,16 +28,28 @@ export default function CustomCursor() {
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
+      if (!isVisible) setIsVisible(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsVisible(false);
+    };
+
+    const handleMouseEnter = () => {
+      setIsVisible(true);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      if (!target || !target.tagName) return;
+
+      const tagName = target.tagName.toLowerCase();
       if (
-        target.tagName.toLowerCase() === "a" ||
-        target.tagName.toLowerCase() === "button" ||
+        tagName === "a" ||
+        tagName === "button" ||
         target.closest("a") ||
         target.closest("button") ||
-        target.classList.contains("cursor-hover")
+        (target.classList && target.classList.contains("cursor-hover"))
       ) {
         setIsHovering(true);
       } else {
@@ -46,12 +59,16 @@ export default function CustomCursor() {
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseover", handleMouseOver);
+    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseenter", handleMouseEnter);
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isVisible]);
 
   if (isMobile) return null;
 
@@ -75,12 +92,13 @@ export default function CustomCursor() {
           marginLeft: "-20px",
           marginTop: "-20px",
           zIndex: 99999,
+          mixBlendMode: isHovering ? "difference" : "normal",
+          opacity: isVisible ? 1 : 0
         }}
         animate={{
           scale: isHovering ? 1.5 : 1,
           backgroundColor: isHovering ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0)",
           border: isHovering ? "0px solid rgba(255, 255, 255, 0)" : "2px solid rgba(255, 255, 255, 0.5)",
-          mixBlendMode: isHovering ? "difference" : "normal"
         }}
         transition={{ duration: 0.15 }}
       />
@@ -94,9 +112,7 @@ export default function CustomCursor() {
           marginLeft: "-4px",
           marginTop: "-4px",
           zIndex: 100000,
-        }}
-        animate={{
-          opacity: isHovering ? 0 : 1
+          opacity: isVisible && !isHovering ? 1 : 0
         }}
         transition={{ duration: 0.1 }}
       />
