@@ -10,13 +10,11 @@ export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window !== "undefined") {
-      // Only disable on small screens. Many laptops have touch (pointer: coarse) but still use mice.
       return window.innerWidth <= 768;
     }
     return true;
   });
 
-  // Smooth follow physics
   const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
@@ -25,10 +23,8 @@ export default function CustomCursor() {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-
     window.addEventListener("resize", handleResize);
 
-    // If it's mobile, we don't attach mouse listeners
     if (isMobile) {
       return () => {
         window.removeEventListener("resize", handleResize);
@@ -79,11 +75,27 @@ export default function CustomCursor() {
             cursor: none !important;
           }
         }
+        .custom-cursor-outer, .custom-cursor-inner {
+          position: fixed;
+          top: 0;
+          left: 0;
+          border-radius: 50%;
+          pointer-events: none;
+        }
+        .custom-cursor-outer {
+          width: 40px;
+          height: 40px;
+        }
+        .custom-cursor-inner {
+          width: 8px;
+          height: 8px;
+          background-color: white;
+        }
       `}} />
       
       {/* Outer Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 rounded-full pointer-events-none"
+        className="custom-cursor-outer"
         style={{
           x: smoothX,
           y: smoothY,
@@ -102,7 +114,7 @@ export default function CustomCursor() {
       
       {/* Core Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none"
+        className="custom-cursor-inner"
         style={{
           x: mouseX,
           y: mouseY,
