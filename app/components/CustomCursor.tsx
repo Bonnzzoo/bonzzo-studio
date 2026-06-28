@@ -84,8 +84,8 @@ export default function CustomCursor() {
         style={{
           x: smoothX,
           y: smoothY,
-          translateX: "-50%",
-          translateY: "-50%",
+          marginLeft: "-20px",
+          marginTop: "-20px",
           scaleX: velocityScaleX,
           scaleY: velocityScale,
           zIndex: 99999,
@@ -118,8 +118,8 @@ export default function CustomCursor() {
         style={{
           x: mouseX,
           y: mouseY,
-          translateX: "-50%",
-          translateY: "-50%",
+          marginLeft: "-3px",
+          marginTop: "-3px",
           zIndex: 100000,
         }}
         animate={{
