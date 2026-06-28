@@ -5,7 +5,9 @@ import SmoothScroll from "./components/SmoothScroll";
 import Navbar from "./components/Navbar";
 import WhatsAppWidget from "./components/WhatsAppWidget";
 import Preloader from "./components/Preloader";
-import CustomCursor from "./components/CustomCursor";
+import dynamic from 'next/dynamic';
+
+const CustomCursor = dynamic(() => import('./components/CustomCursor'), { ssr: false });
 import { ContactProvider } from "./components/ContactContext";
 import "./globals.css";
 
