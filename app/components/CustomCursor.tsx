@@ -8,8 +8,13 @@ export default function CustomCursor() {
   const mouseY = useMotionValue(-100);
 
   const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== "undefined") {
+      // Only disable on small screens. Many laptops have touch (pointer: coarse) but still use mice.
+      return window.innerWidth <= 768;
+    }
+    return true;
+  });
 
   // Smooth follow physics
   const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
@@ -17,26 +22,22 @@ export default function CustomCursor() {
   const smoothY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    // Check if device is touch or small screen
-    if (window.matchMedia("(max-width: 768px)").matches || window.matchMedia("(pointer: coarse)").matches) {
-      setIsMobile(true);
-      return;
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // If it's mobile, we don't attach mouse listeners
+    if (isMobile) {
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
     }
-    
-    setIsMobile(false);
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
-      if (!isVisible) setIsVisible(true);
-    };
-
-    const handleMouseLeave = () => {
-      setIsVisible(false);
-    };
-
-    const handleMouseEnter = () => {
-      setIsVisible(true);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -59,16 +60,13 @@ export default function CustomCursor() {
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseover", handleMouseOver);
-    document.addEventListener("mouseleave", handleMouseLeave);
-    document.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      document.removeEventListener("mouseenter", handleMouseEnter);
     };
-  }, [mouseX, mouseY, isVisible]);
+  }, [mouseX, mouseY, isMobile]);
 
   if (isMobile) return null;
 
@@ -93,7 +91,6 @@ export default function CustomCursor() {
           marginTop: "-20px",
           zIndex: 99999,
           mixBlendMode: isHovering ? "difference" : "normal",
-          opacity: isVisible ? 1 : 0
         }}
         animate={{
           scale: isHovering ? 1.5 : 1,
@@ -105,14 +102,15 @@ export default function CustomCursor() {
       
       {/* Core Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none mix-blend-difference"
+        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none"
         style={{
           x: mouseX,
           y: mouseY,
           marginLeft: "-4px",
           marginTop: "-4px",
           zIndex: 100000,
-          opacity: isVisible && !isHovering ? 1 : 0
+          mixBlendMode: "difference",
+          opacity: isHovering ? 0 : 1
         }}
         transition={{ duration: 0.1 }}
       />
