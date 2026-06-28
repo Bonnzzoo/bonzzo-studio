@@ -15,20 +15,17 @@ export default function CustomCursor() {
     return true;
   });
 
-  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
+  // Premium ultra-smooth physics
+  const springConfig = { damping: 28, stiffness: 350, mass: 0.4 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
 
     if (isMobile) {
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
+      return () => window.removeEventListener("resize", handleResize);
     }
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -75,57 +72,68 @@ export default function CustomCursor() {
             cursor: none !important;
           }
         }
-        .custom-cursor-outer, .custom-cursor-inner {
+        .premium-cursor-wrapper {
           position: fixed;
           top: 0;
           left: 0;
-          border-radius: 50%;
           pointer-events: none;
-        }
-        .custom-cursor-outer {
-          width: 40px;
-          height: 40px;
-        }
-        .custom-cursor-inner {
-          width: 8px;
-          height: 8px;
-          background-color: white;
+          z-index: 2147483647; /* Highest possible */
+          mix-blend-mode: difference;
+          /* Force hardware acceleration */
+          transform: translateZ(0);
+          will-change: transform;
         }
       `}} />
       
-      {/* Outer Ring */}
-      <motion.div
-        className="custom-cursor-outer"
-        style={{
-          x: smoothX,
-          y: smoothY,
-          marginLeft: "-20px",
-          marginTop: "-20px",
-          zIndex: 99999,
-          mixBlendMode: isHovering ? "difference" : "normal",
-        }}
-        animate={{
-          scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0)",
-          border: isHovering ? "0px solid rgba(255, 255, 255, 0)" : "2px solid rgba(255, 255, 255, 0.5)",
-        }}
-        transition={{ duration: 0.15 }}
-      />
-      
-      {/* Core Dot */}
-      <motion.div
-        className="custom-cursor-inner"
-        style={{
-          x: mouseX,
-          y: mouseY,
-          marginLeft: "-4px",
-          marginTop: "-4px",
-          zIndex: 100000,
-          mixBlendMode: "difference",
-          opacity: isHovering ? 0 : 1
-        }}
-        transition={{ duration: 0.1 }}
-      />
+      {/* Wrapper ensures mix-blend-mode works perfectly without Safari bugs */}
+      <div className="premium-cursor-wrapper">
+        
+        {/* Outer Ring */}
+        <motion.div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            x: smoothX,
+            y: smoothY,
+            marginLeft: "-20px",
+            marginTop: "-20px",
+            width: "40px",
+            height: "40px",
+            borderRadius: "50%",
+            border: "1.5px solid rgba(255, 255, 255, 0.6)",
+            backgroundColor: "rgba(255, 255, 255, 0)",
+          }}
+          animate={{
+            scale: isHovering ? 1.6 : 1,
+            backgroundColor: isHovering ? "rgba(255, 255, 255, 1)" : "rgba(255, 255, 255, 0)",
+            border: isHovering ? "0px solid rgba(255, 255, 255, 0)" : "1.5px solid rgba(255, 255, 255, 0.6)",
+          }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+        />
+        
+        {/* Core Dot */}
+        <motion.div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            x: mouseX,
+            y: mouseY,
+            marginLeft: "-4px",
+            marginTop: "-4px",
+            width: "8px",
+            height: "8px",
+            borderRadius: "50%",
+            backgroundColor: "white",
+          }}
+          animate={{
+            opacity: isHovering ? 0 : 1,
+            scale: isHovering ? 0 : 1,
+          }}
+          transition={{ duration: 0.15 }}
+        />
+      </div>
     </>
   );
 }
