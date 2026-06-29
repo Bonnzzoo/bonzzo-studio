@@ -5,6 +5,7 @@ import SmoothScroll from "./components/SmoothScroll";
 import Navbar from "./components/Navbar";
 import WhatsAppWidget from "./components/WhatsAppWidget";
 import Preloader from "./components/Preloader";
+import CustomCursor from "./components/CustomCursor";
 
 import { ContactProvider } from "./components/ContactContext";
 import "./globals.css";
@@ -94,6 +95,7 @@ export default function RootLayout({
       className={`${koulen.variable} ${robotoMono.variable} ${albertSans.variable} ${ateq.variable} ${guthen.variable} ${spaceGrotesk.variable}`}
     >
       <body suppressHydrationWarning>
+        <CustomCursor />
         <ContactProvider>
 
           <Preloader />
