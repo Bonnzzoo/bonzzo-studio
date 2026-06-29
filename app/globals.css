@@ -3013,7 +3013,7 @@ body::before {
 .exp-role-block > * {
   display: block;
   width: 100%;
-  text-align: right;
+  text-align: right !important;
 }
 
 .exp-company {
@@ -3030,21 +3030,24 @@ body::before {
   line-height: 1;
   margin: 0;
   white-space: nowrap;
-}
-
-.exp-location, .exp-role {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  color: var(--text-light-muted);
-  text-transform: uppercase;
+  text-align: right !important;
+  width: 100%;
 }
 
 .exp-location {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
   color: var(--text-light-dim);
+  text-transform: uppercase;
 }
 
 .exp-role {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
   color: var(--text-light);
+  text-transform: uppercase;
+  text-align: right !important;
+  width: 100%;
 }
 
 .exp-tasks {

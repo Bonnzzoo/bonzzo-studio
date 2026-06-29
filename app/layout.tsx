@@ -5,9 +5,7 @@ import SmoothScroll from "./components/SmoothScroll";
 import Navbar from "./components/Navbar";
 import WhatsAppWidget from "./components/WhatsAppWidget";
 import Preloader from "./components/Preloader";
-import dynamic from 'next/dynamic';
 
-const CustomCursor = dynamic(() => import('./components/CustomCursor'), { ssr: false });
 import { ContactProvider } from "./components/ContactContext";
 import "./globals.css";
 
@@ -97,7 +95,7 @@ export default function RootLayout({
     >
       <body suppressHydrationWarning>
         <ContactProvider>
-          <CustomCursor />
+
           <Preloader />
           <WhatsAppWidget />
           <Navbar />
