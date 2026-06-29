@@ -8,12 +8,8 @@ export default function CustomCursor() {
   const mouseY = useMotionValue(-100);
 
   const [isHovering, setIsHovering] = useState(false);
-  const [isMobile, setIsMobile] = useState(() => {
-    if (typeof window !== "undefined") {
-      return window.innerWidth <= 768;
-    }
-    return true;
-  });
+  const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Premium ultra-smooth physics
   const springConfig = { damping: 28, stiffness: 350, mass: 0.4 };
@@ -21,12 +17,21 @@ export default function CustomCursor() {
   const smoothY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    setIsMounted(true);
+    
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Check initially
+    handleResize();
     window.addEventListener("resize", handleResize);
 
-    if (isMobile) {
-      return () => window.removeEventListener("resize", handleResize);
-    }
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted || isMobile) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
@@ -55,13 +60,12 @@ export default function CustomCursor() {
     window.addEventListener("mouseover", handleMouseOver);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseover", handleMouseOver);
     };
-  }, [mouseX, mouseY, isMobile]);
+  }, [isMounted, isMobile, mouseX, mouseY]);
 
-  if (isMobile) return null;
+  if (!isMounted || isMobile) return null;
 
   return (
     <>
