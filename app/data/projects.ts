@@ -19,7 +19,15 @@ export interface ProjectData {
   image?: string;
   prototypeUrl?: string;
   githubUrl?: string;
-  [key: string]: unknown;
+  personas?: {
+    headers: string[];
+    rows: {
+      label: string;
+      values: (string | number)[];
+    }[];
+  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
 }
 
 export const projectsData: Record<string, ProjectData> = {
