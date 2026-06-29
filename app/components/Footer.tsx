@@ -56,7 +56,7 @@ export default function Footer() {
                 <span className="footer-hello-arabic" style={{ transform: "translateY(-0.1em)" }}>مرحبا</span>
               </div>
               <p className="footer-hello-desc">
-                Have a project in mind? Let's talk about it. Fill out the form or reach out directly.
+                Have a project in mind? Let&apos;s talk about it. Fill out the form or reach out directly.
               </p>
             </div>
           </Reveal>
@@ -67,7 +67,7 @@ export default function Footer() {
                 <div className="form-success-state">
                   <div className="success-icon">✦</div>
                   <h3>MESSAGE RECEIVED</h3>
-                  <p>Thanks for reaching out! I'll get back to you as soon as possible.</p>
+                  <p>Thanks for reaching out! I&apos;ll get back to you as soon as possible.</p>
                   <button onClick={() => setStatus("idle")} className="form-submit" style={{ marginTop: '24px' }}>
                     SEND ANOTHER <span className="submit-arrow">↗</span>
                   </button>

@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Reveal from "./animations/Reveal";
 
@@ -56,7 +55,7 @@ const services: ServiceItem[] = [
 export default function WhatIDo() {
   return (
     <section className="sirnik-services" id="services">
-      {services.map((service, i) => (
+      {services.map((service) => (
         <div
           key={service.index}
           className="sirnik-card"

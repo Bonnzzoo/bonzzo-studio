@@ -115,7 +115,7 @@ export default function CaseStudyClient({ project }: { project: ProjectData }) {
             </Reveal>
             <Reveal direction="up" delay={0.2} width="100%">
               <div className="workflow-grid">
-              {project.workflow && project.workflow.map((step, i) => (
+              {project.workflow && project.workflow.map((step) => (
                 <div
                   className={`workflow-cell workflow-step`}
                   key={step.number}
@@ -157,10 +157,10 @@ export default function CaseStudyClient({ project }: { project: ProjectData }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {project.personas.rows.map((row: any) => (
+                    {project.personas.rows.map((row: { label: string; values: (string | number)[] }) => (
                       <tr key={row.label}>
                         <td>{row.label}</td>
-                        {row.values.map((val: any, i: number) => (
+                        {row.values.map((val: string | number, i: number) => (
                           <td key={i}>{val}</td>
                         ))}
                       </tr>

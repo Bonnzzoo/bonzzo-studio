@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { useContact } from "./ContactContext";
 
 export default function Navbar() {
@@ -35,15 +36,15 @@ export default function Navbar() {
         </button>
 
         <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
-          <a href="/#hero" onClick={() => setMenuOpen(false)}>
+          <Link href="/#hero" onClick={() => setMenuOpen(false)}>
             Home
-          </a>
-          <a href="/#projects" onClick={() => setMenuOpen(false)}>
+          </Link>
+          <Link href="/#projects" onClick={() => setMenuOpen(false)}>
             Work
-          </a>
-          <a href="/#services" onClick={() => setMenuOpen(false)}>
+          </Link>
+          <Link href="/#services" onClick={() => setMenuOpen(false)}>
             Services
-          </a>
+          </Link>
           <button className="navbar-cta-mobile" onClick={() => { setMenuOpen(false); openContact(); }}>
             Let&apos;s Create
           </button>

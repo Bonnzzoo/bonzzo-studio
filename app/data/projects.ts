@@ -19,7 +19,7 @@ export interface ProjectData {
   image?: string;
   prototypeUrl?: string;
   githubUrl?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export const projectsData: Record<string, ProjectData> = {

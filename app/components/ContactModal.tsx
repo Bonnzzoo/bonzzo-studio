@@ -13,6 +13,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
     if (isOpen) {
       document.addEventListener("keydown", handleEsc);
       document.body.style.overflow = "hidden";
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setStatus("idle"); // Reset status when opening
     }
     return () => {
@@ -66,7 +67,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
           <div className="form-success-state modal-success-state">
             <div className="success-icon">✦</div>
             <h3>MESSAGE RECEIVED</h3>
-            <p>Thanks for reaching out! I'll get back to you as soon as possible.</p>
+            <p>Thanks for reaching out! I&apos;ll get back to you as soon as possible.</p>
             <button onClick={() => setStatus("idle")} className="form-submit" style={{ marginTop: '24px' }}>
               SEND ANOTHER <span className="submit-arrow">↗</span>
             </button>

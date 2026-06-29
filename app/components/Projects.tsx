@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { projectsData } from "../data/projects";
 import Reveal from "./animations/Reveal";
 import StaggeredList, { StaggerItem } from "./animations/StaggeredList";
@@ -41,7 +40,7 @@ export default function Projects() {
                 </Reveal>
                 
                 <StaggeredList className="projects-vibe-grid" delayOffset={0.2} staggerChildren={0.15}>
-                  {categoryProjects.map((project, index) => (
+                  {categoryProjects.map((project) => (
                     <StaggerItem key={project.slug} className="vibe-card">
                       <div className="vibe-card-image-wrapper">
                         {project.liveLink ? (
