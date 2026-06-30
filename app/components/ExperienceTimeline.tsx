@@ -74,7 +74,7 @@ export default function ExperienceTimeline() {
           
           <div className="experience-right">
             {experiences.map((exp, i) => (
-              <Reveal key={i} direction="up" delay={0.2 + i * 0.1}>
+              <Reveal key={i} direction="up" delay={0.2 + i * 0.1} width="100%">
                 <div className={`exp-item ${i === 0 ? "first-exp-item" : ""}`}>
                   <div className="exp-top-row">
                     <div className="exp-company-block">
