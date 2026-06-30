@@ -2985,8 +2985,8 @@ body::before {
 }
 
 .exp-top-row {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  display: flex;
+  justify-content: space-between;
   gap: 40px;
   align-items: flex-start;
   width: 100%;
