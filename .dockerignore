@@ -5,3 +5,19 @@ npm-debug.log
 README.md
 .next
 .git
+app
+public
+package.json
+package-lock.json
+tsconfig.json
+tsconfig.tsbuildinfo
+next.config.ts
+next-env.d.ts
+postcss.config.mjs
+eslint.config.mjs
+test_cr.html
+test_me.html
+AGENTS.md
+CLAUDE.md
+.gcloudignore
+Bonzzo Studio,claude
